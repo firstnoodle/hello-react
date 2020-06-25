@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const baseStyle = 'inline-flex items-center justify-center shadow-sm border focus:outline-none transition ease-in-out duration-150';
 
@@ -15,33 +15,22 @@ const styles = {
     primary: ' bg-blue-500 border-transparent text-white hover:bg-blue-600 focus:border-blue-700 focus:shadow-outline-blue'
 }
 
-// const types = {
-//     normal: '',
-//     text: '',
-//     icon: '',
-// }
+// TODO: consider types (default, text, icon, etc) and rounded
 
-export class Button extends React.Component {
-    constructor(props) {
-        super(props);
+export const Button = props => {
 
-        const tagName = props.href ? 'a' : 'button';
+    const [tag, setTag] = useState(props.href ? 'a' : 'button');
+    const [options, setOptions] = useState({
+        className: baseStyle + sizes[props.size || 'sm'] + styles[props.style || 'plain']
+    });
 
-        const options = {};
-        options.className = baseStyle + sizes[props.size || 'sm'] + styles[props.style || 'plain'];
-
-        if (props.href) {
-            options.href = props.href;
-            options.target = props.target || '_blank';
-        } else if (props.onClick) {
-            options.onClick = props.onClick;
-        }
-
-        this.state = { tagName, options };
+    if (props.href) {
+        options.href = props.href;
+        options.target = props.target || '_blank';
+    } else if (props.onClick) {
+        options.onClick = props.onClick;
     }
 
-    render() {
-        return React.createElement(this.state.tagName, this.state.options, this.props.children);
-    }
+    return React.createElement(tag, options, props.children);
 }
 
