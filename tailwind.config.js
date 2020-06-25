@@ -5,6 +5,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    shadow: ['focus', 'hover'],
+    zIndex: ['focus', 'hover'],
+  },
   plugins: [],
 }
