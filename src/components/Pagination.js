@@ -6,7 +6,7 @@ const classBase = 'relative inline-flex items-center px-2 py-1 border border-gra
 const classPrev = classBase + ' rounded-l-md';
 const classNext = classBase + ' -ml-px rounded-r-md';
 
-export function Pagination(props) {
+export const Pagination = props => {
     return <nav className="relative z-0 inline-flex shadow-sm">
         <a
             href="#"
