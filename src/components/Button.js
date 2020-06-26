@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const baseStyle = 'inline-flex items-center justify-center shadow-sm border focus:outline-none transition ease-in-out duration-150';
 
@@ -16,7 +17,6 @@ const styles = {
 }
 
 // TODO: consider types (default, text, icon, etc) and rounded
-
 export const Button = props => {
 
     const [tag, setTag] = useState(props.href ? 'a' : 'button');
@@ -34,3 +34,8 @@ export const Button = props => {
     return React.createElement(tag, options, props.children);
 }
 
+Button.propTypes = {
+    href: PropTypes.string,
+    target: PropTypes.string,
+    onClick: PropTypes.func,
+}
