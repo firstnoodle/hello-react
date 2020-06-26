@@ -4,6 +4,7 @@ import './assets/firstnoodle-v1.0/style.css';
 import { Button } from './components/Button';
 import { Icon } from './components/Icon';
 import { Pagination } from './components/Pagination';
+import { Popper } from './components/Popper';
 
 class App extends React.Component {
 
@@ -19,6 +20,7 @@ class App extends React.Component {
                     CLICK
                 </Button>
                 <Pagination />
+                <Popper reference={<Button />} />
             </div>
         );
     }
